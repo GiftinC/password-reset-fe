@@ -13,7 +13,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/register', { email, password });
+            const response = await axios.post('https://password-reset-74mg.onrender.com/register', { email, password });
             setMessage(response.data.message);
         } catch (error) {
             setMessage('Error registering user: ' + error.message);
