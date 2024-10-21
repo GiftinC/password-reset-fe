@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
 import { useNavigate } from 'react-router-dom';
 
-dotenv.config();
+
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -11,12 +10,10 @@ const Register = () => {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
-
-    dotenv.config();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`, { email, password });
+            const response = await axios.post('http://localhost:3000/register', { email, password });
             setMessage(response.data.message);
         } catch (error) {
             setMessage('Error registering user: ' + error.message);
@@ -25,7 +22,7 @@ const Register = () => {
 
     return (
         <div className="compdiv">
-            <h2>Register</h2>
+                 <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
